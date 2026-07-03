@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Parisienne&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* New Luxury Blush & Champagne Gold Palette */
+    /* Luxury Blush & Champagne Gold Palette */
     --blush: #F7E4E7;
     --blush-soft: #FBF3F4;
     --paper: #FFFDFD;
@@ -33,24 +33,7 @@
   }
   body.locked { overflow: hidden; height: 100vh; }
 
-  .eyebrow {
-    font-family: 'Jost', sans-serif;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    color: var(--rose-dark);
-    font-weight: 600;
-  }
-
-  /* ---------- REFINED LUXURY DIVIDER ---------- */
-  .divider {
-    display: flex; align-items: center; justify-content: center;
-    gap: 16px; margin: 0 auto; width: min(340px, 85%);
-  }
-  .divider svg { width: 28px; height: 28px; flex: none; color: var(--accent-gold); }
-  .divider .line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-gold), transparent); }
-
-  /* ================= LUXURY ENVELOPE OVERLAY ================= */
+  /* ================= ENVELOPE OVERLAY ================= */
   #envelope-screen {
     position: fixed; inset: 0; z-index: 50;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -64,9 +47,7 @@
   }
   #envelope-screen.reveal { opacity: 0; pointer-events: none; }
 
-  .envelope-wrap {
-    perspective: 1600px;
-  }
+  .envelope-wrap { perspective: 1600px; }
   .envelope {
     position: relative;
     width: min(340px, 82vw);
@@ -86,9 +67,7 @@
     border-radius: 8px;
   }
   .card-peek {
-    position: absolute;
-    left: 5%; right: 5%; top: 6%;
-    height: 90%;
+    position: absolute; left: 5%; right: 5%; top: 6%; height: 90%;
     background: var(--paper);
     border: 1px solid rgba(223,186,115,0.35);
     border-radius: 6px;
@@ -100,50 +79,36 @@
     z-index: 2;
     background-image: radial-gradient(var(--blush) 0.5px, transparent 0.5px);
     background-size: 16px 16px;
-    background-opacity: 0.3;
   }
   .card-peek .monogram {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--rose-dark);
-    letter-spacing: 0.1em;
+    font-family: 'Playfair Display', serif; font-size: 1.3rem;
+    font-weight: 600; color: var(--rose-dark); letter-spacing: 0.1em;
   }
   .card-peek span.small {
-    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-soft);
+    font-size: 1.4rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-soft);
   }
   .envelope.peek .card-peek { transform: translateY(-48%); }
 
   .flap {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 60%;
+    position: absolute; top: 0; left: 0; right: 0; height: 60%;
     background: linear-gradient(160deg, var(--paper), #FAECF0);
     clip-path: polygon(0 0, 100% 0, 50% 100%);
-    transform-origin: top center;
-    transform-style: preserve-3d;
-    z-index: 3;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    transform-origin: top center; transform-style: preserve-3d; z-index: 3;
+    border-top-left-radius: 8px; border-top-right-radius: 8px;
     box-shadow: 0 8px 12px rgba(109,51,59,0.06);
     transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .envelope.opening .flap { transform: rotateX(180deg); }
 
   .front-pocket {
-    position: absolute;
-    left: 0; right: 0; bottom: 0; height: 64%;
+    position: absolute; left: 0; right: 0; bottom: 0; height: 64%;
     background: linear-gradient(350deg, var(--paper) 0%, #FDF7F8 100%);
-    clip-path: polygon(0 100%, 0 20%, 50% 70%, 100% 20%, 100% 100%);
-    z-index: 4;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    clip-path: polygon(0 100%, 0 20%, 50% 70%, 100% 20%, 100% 100%); z-index: 4;
+    border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;
   }
 
-  /* Ribbon styled to match premium video aesthetic */
   .ribbon {
-    position: absolute; z-index: 5;
-    background: var(--rose);
+    position: absolute; z-index: 5; background: var(--rose);
     box-shadow: 0 2px 5px rgba(109,51,59,0.15);
     transition: transform 0.7s ease, opacity 0.7s ease;
   }
@@ -152,37 +117,23 @@
   .envelope.untying .ribbon.vert { transform: translateY(-110%); opacity: 0; }
   .envelope.untying .ribbon.horiz { transform: translateX(120%); opacity: 0; }
 
-  /* Elegant wide textile bow */
   .bow {
-    position: absolute; z-index: 6;
-    left: 50%; top: 50%;
-    width: 82px; height: 82px;
-    transform: translate(-50%,-50%);
-    filter: drop-shadow(0 4px 6px rgba(109,51,59,0.2));
+    position: absolute; z-index: 6; left: 50%; top: 50%; width: 82px; height: 82px;
+    transform: translate(-50%,-50%); filter: drop-shadow(0 4px 6px rgba(109,51,59,0.2));
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
   }
-  .envelope.untying .bow {
-    transform: translate(-50%,-50%) scale(0.2) rotate(45deg);
-    opacity: 0;
-  }
+  .envelope.untying .bow { transform: translate(-50%,-50%) scale(0.2) rotate(45deg); opacity: 0; }
 
   .tap-hint {
-    margin-top: 32px;
-    font-family: 'Parisienne', cursive;
-    font-size: 1.4rem;
-    color: var(--rose-dark);
-    text-shadow: 0 1px 1px #fff;
+    margin-top: 50px; font-family: 'Parisienne', cursive; font-size: 2rem;
+    color: var(--rose-dark); text-shadow: 0 1px 1px #fff;
     animation: pulse 2.4s ease-in-out infinite;
   }
   @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
   
   .to-line {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.15rem;
-    color: var(--ink-soft);
-    margin-bottom: 20px;
-    letter-spacing: 0.03em;
+    font-family: 'Playfair Display', serif; font-style: italic; font-size: 2rem;
+    color: var(--ink-soft); margin-bottom: 40px; letter-spacing: 0.03em; text-align: center;
   }
 
   /* ================= MAIN SITE CONTENT ================= */
@@ -191,56 +142,74 @@
   #music-toggle {
     position: fixed; bottom: 24px; right: 24px; z-index: 40;
     width: 48px; height: 48px; border-radius: 50%;
-    border: 1px solid rgba(223,186,115,0.4);
-    background: var(--paper);
-    color: var(--rose-dark);
-    box-shadow: var(--shadow);
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform .2s ease;
+    border: 1px solid rgba(223,186,115,0.4); background: var(--paper);
+    color: var(--rose-dark); box-shadow: var(--shadow); cursor: pointer;
+    display: flex; align-items: center; justify-content: center; transition: transform .2s ease;
   }
   #music-toggle:hover { transform: scale(1.08); }
   #music-toggle.spinning svg { animation: spin 4s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* ---------- HERO ANIMATIONS ---------- */
+  /* ---------- HERO SECTION ---------- */
   .hero {
     min-height: 100vh;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center;
     padding: 80px 24px 60px;
     position: relative;
+    overflow: hidden; /* For particles */
     background: 
       radial-gradient(circle at top left, #FFF5F6, transparent 40%),
       radial-gradient(circle at bottom right, #F5E6E8, transparent 40%);
   }
+
+  /* Make sure text content sits above the particles */
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   
   /* Hide elements initially */
-  .hero > * {
+  .hero-content > * {
     opacity: 0;
     transform: translateY(25px);
-    transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .hero.animate-in .hero-content > * { opacity: 1; transform: translateY(0); }
+
+  /* Cascading delay */
+  .hero.animate-in .eyebrow { transition-delay: 0.6s; }
+  .hero.animate-in h1 { transition-delay: 1.2s; }
+  .hero.animate-in .tagline { transition-delay: 2.0s; }
+  .hero.animate-in .date { transition-delay: 2.8s; }
+
+  /* Refined "Save the Date" Styling */
+  .hero .eyebrow { 
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-size: 1.6rem; /* INCREASED FONT SIZE HERE */
+    color: var(--rose-dark);
+    font-weight: 400;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .hero .eyebrow::after {
+    content: '';
+    display: block;
+    width: 45px;
+    height: 1px;
+    background: var(--accent-gold);
+    margin: 14px auto 0;
   }
 
-  /* Animate in when class is added */
-  .hero.animate-in > * {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Stagger the delays for a cascading effect */
-  .hero.animate-in .eyebrow { transition-delay: 0.4s; }
-  .hero.animate-in h1 { transition-delay: 0.7s; }
-  .hero.animate-in .tagline { transition-delay: 1.0s; }
-  .hero.animate-in .date { transition-delay: 1.2s; }
-  .hero.animate-in .place { transition-delay: 1.4s; }
-  .hero.animate-in .scroll-cue { transition-delay: 2.0s; }
-
-  .hero .eyebrow { margin-bottom: 24px; }
   .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-weight: 400;
-    font-size: clamp(2.8rem, 10vw, 4.8rem);
+    font-weight: 600;
+    font-size: clamp(3.4rem, 10vw, 4.8rem);
     color: var(--ink);
     line-height: 1.1;
   }
@@ -253,142 +222,54 @@
   }
   .hero .date {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.05rem, 3.5vw, 1.35rem);
+    font-size: clamp(1.8rem, 3vw, 2.2rem); /* Increased Size */
     color: var(--ink);
     letter-spacing: 0.05em;
   }
-  .hero .place {
-    margin-top: 8px;
-    color: var(--ink-soft);
-    font-size: 0.95rem;
-    letter-spacing: 0.03em;
-  }
-  .hero .scroll-cue {
-    position: absolute; bottom: 32px;
-    font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--ink-soft);
-  }
 
-  section { padding: 80px 24px; }
-  .section-inner { max-width: 960px; margin: 0 auto; }
-  .section-head { text-align: center; margin-bottom: 50px; }
-  .section-head h2 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: clamp(2rem, 5.5vw, 2.75rem);
-    color: var(--ink);
-    margin-top: 14px;
-  }
-
-  .events { background: var(--paper); }
-  .event-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-  .event-card {
-    background: var(--blush-soft);
-    border: 1px solid rgba(223,186,115,0.25);
-    border-radius: 16px;
-    padding: 40px 30px;
-    text-align: center;
-    box-shadow: 0 12px 30px rgba(109,51,59,0.04);
-    position: relative;
+  /* ---------- GLITTER & PETAL PARTICLES ---------- */
+  #particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
     overflow: hidden;
   }
-  .event-card::before {
-    content: ''; position: absolute; top: 0; inset: 0; height: 4px; background: var(--accent-gold);
+  .particle {
+    position: absolute;
+    top: -20px;
+    opacity: 0;
+    animation: fall linear forwards;
   }
-  .event-card .icon { width: 34px; height: 34px; margin: 0 auto 18px; color: var(--rose); }
-  .event-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem; color: var(--rose-dark); margin-bottom: 8px;
-    font-weight: 600;
+  /* Delicate Golden Glitter */
+  .particle.glitter {
+    width: 5px; height: 5px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 6px 1px rgba(223,186,115,0.7);
   }
-  .event-card .day { font-weight: 500; letter-spacing: 0.05em; color: var(--ink); margin-bottom: 6px; }
-  .event-card .venue { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.5; margin-top: 10px; }
-  .event-card .note {
-    margin-top: 16px; font-family: 'Parisienne', cursive; font-size: 1.15rem; color: var(--rose-dark);
+  /* Soft Blush Petal */
+  .particle.petal {
+    width: 14px; height: 14px;
+    background: var(--rose);
+    border-radius: 50% 0 50% 0; /* Petal shape */
+    opacity: 0.5;
   }
 
-  .venue-section .box {
-    display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px;
-  }
-  .venue-section address { font-style: normal; color: var(--ink-soft); line-height: 1.6; letter-spacing: 0.02em; }
-  
-  .btn {
-    display: inline-block; margin-top: 10px;
-    padding: 14px 34px;
-    background: var(--rose-dark);
-    color: #fff; text-decoration: none;
-    border-radius: 30px;
-    font-size: 0.88rem; letter-spacing: 0.1em; text-transform: uppercase;
-    border: none; cursor: pointer;
-    transition: background .25s ease, transform .2s ease;
-    font-family: 'Jost', sans-serif; font-weight: 500;
-    box-shadow: 0 5px 15px rgba(109,51,59,0.2);
-  }
-  .btn:hover { background: var(--ink); transform: translateY(-2px); }
-  
-  .rsvp { background: var(--paper); }
-  .rsvp .deadline {
-    text-align: center; color: var(--ink-soft); margin-bottom: 36px; font-size: 0.98rem; letter-spacing: 0.02em;
-  }
-  .rsvp .deadline b { color: var(--rose-dark); font-weight: 600; }
-  
-  form#rsvp-form {
-    max-width: 480px; margin: 0 auto;
-    background: var(--blush-soft);
-    padding: 40px 34px;
-    border-radius: 20px;
-    border: 1px solid rgba(223,186,115,0.25);
-    box-shadow: 0 15px 35px rgba(109,51,59,0.05);
-  }
-  .field { margin-bottom: 24px; }
-  .field label {
-    display: block; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--rose-dark); font-weight: 600; margin-bottom: 10px;
-  }
-  .field input[type=text] {
-    width: 100%; padding: 14px 16px; border-radius: 8px;
-    border: 1px solid rgba(140,115,119,0.25);
-    font-family: 'Jost', sans-serif; font-size: 1rem; background: #fff;
-    color: var(--ink);
-    transition: border-color 0.2s ease;
-  }
-  .field input[type=text]:focus { outline: none; border-color: var(--accent-gold); }
-  
-  .attend-options { display: flex; gap: 14px; }
-  .attend-options input { display: none; }
-  .attend-options label {
-    flex: 1; text-align: center; padding: 14px 12px; border-radius: 8px;
-    border: 1px solid rgba(140,115,119,0.25);
-    cursor: pointer; font-size: 0.9rem; color: var(--ink); background: #fff; font-weight: 500;
-    transition: all .2s ease;
-  }
-  .attend-options input:checked + label {
-    background: var(--rose-dark); color: #fff; border-color: var(--rose-dark);
-  }
-  form#rsvp-form button { width: 100%; margin-top: 10px; }
-  
-  #rsvp-message {
-    max-width: 480px; margin: 24px auto 0; text-align: center;
-    font-family: 'Parisienne', cursive; font-size: 1.4rem; color: var(--rose-dark);
-    display: none;
+  @keyframes fall {
+    0% { transform: translateY(-5vh) rotate(0deg) scale(0.8); opacity: 0; }
+    10% { opacity: 0.8; }
+    80% { opacity: 0.8; }
+    100% { transform: translateY(105vh) rotate(360deg) scale(1.2); opacity: 0; }
   }
 
   footer {
     padding: 60px 24px 40px; text-align: center;
-    color: var(--ink-soft); font-size: 0.88rem;
-    letter-spacing: 0.05em;
+    color: var(--ink-soft); font-size: 0.88rem; letter-spacing: 0.05em;
   }
   footer p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--rose-dark); }
   footer .credit { margin-top: 12px; font-family: 'Jost', sans-serif; font-size: 0.72rem; opacity: 0.75; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); }
 
-  @media (max-width: 640px) {
-    .event-grid { grid-template-columns: 1fr; gap: 24px; }
-    section { padding: 60px 20px; }
-  }
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
   }
@@ -396,9 +277,8 @@
 </head>
 <body class="locked">
 
-<!-- ================= ENVELOPE INTRO ================= -->
 <div id="envelope-screen">
-  <p class="to-line">The Honour of Your Presence is Requested</p>
+  <p class="to-line">For our beloved family & friends</p>
   <div class="envelope-wrap">
     <div class="envelope" id="envelope">
       <div class="env-back"></div>
@@ -411,8 +291,6 @@
       <div class="flap"></div>
       <div class="ribbon vert"></div>
       <div class="ribbon horiz"></div>
-      
-      <!-- Elegant vector bow matching the video theme -->
       <svg class="bow" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
         <path d="M40 40 C20 15, 2 22, 5 40 C2 58, 20 65, 40 40 Z" fill="#DDA0A7" stroke="#6D333B" stroke-width="1"/>
         <path d="M40 40 C60 15, 78 22, 75 40 C78 58, 60 65, 40 40 Z" fill="#DDA0A7" stroke="#6D333B" stroke-width="1"/>
@@ -425,7 +303,6 @@
   <p class="tap-hint">tap invitation to open</p>
 </div>
 
-<!-- ================= SITE CONTENT ================= -->
 <div id="site-content">
 
   <audio id="bgm" loop preload="none">
@@ -440,95 +317,15 @@
     </svg>
   </button>
 
-  <!-- HERO -->
   <section class="hero">
-    <p class="eyebrow">Save the Date</p>
-    <h1>Vritti<span class="amp">&amp;</span>Deepak</h1>
-    <p class="tagline">are getting married</p>
-    <p class="date">12 – 13 December 2026</p>
-    <p class="place">Park Inn by Radisson · Navi Mumbai</p>
-    <p class="scroll-cue">scroll down ↓</p>
-  </section>
-
-  <!-- EVENTS -->
-  <section class="events">
-    <div class="section-inner">
-      <div class="section-head">
-        <div class="divider">
-          <div class="line"></div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 4v16M8 8h8M9 12h6" stroke-linecap="round"/>
-          </svg>
-          <div class="line"></div>
-        </div>
-        <p class="eyebrow" style="margin-top:16px;">The Celebrations</p>
-        <h2>The Wedding Schedule</h2>
-      </div>
-      <div class="event-grid">
-        <div class="event-card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18V6l10-2v12" stroke="currentColor" stroke-width="1.5"/><circle cx="7" cy="18" r="2.4" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="16" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg>
-          <h3>Sangeet</h3>
-          <p class="day">Saturday, 12 December 2026</p>
-          <p class="venue">Park Inn by Radisson<br>Navi Mumbai</p>
-          <p class="note">an evening of music &amp; dance</p>
-        </div>
-        <div class="event-card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3c3 3 3 6 0 9-3-3-3-6 0-9Z" stroke="currentColor" stroke-width="1.5"/><path d="M5 21c1-5 4-8 7-8s6 3 7 8" stroke="currentColor" stroke-width="1.5"/></svg>
-          <h3>Wedding</h3>
-          <p class="day">Sunday, 13 December 2026</p>
-          <p class="venue">Park Inn by Radisson<br>Navi Mumbai</p>
-          <p class="note">join us as we celebrate love</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VENUE -->
-  <section class="venue-section">
-    <div class="section-inner box">
-      <div class="divider">
-        <div class="line"></div>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/></svg>
-        <div class="line"></div>
-      </div>
-      <p class="eyebrow" style="margin-top:16px;">The Venue</p>
-      <h2 style="font-family:'Playfair Display',serif; font-weight: 400;">Park Inn by Radisson</h2>
-      <address>Navi Mumbai, Maharashtra, India</address>
-      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Park+Inn+by+Radisson+Navi+Mumbai" target="_blank" rel="noopener">Get Directions</a>
-    </div>
-  </section>
-
-  <!-- RSVP -->
-  <section class="rsvp">
-    <div class="section-inner">
-      <div class="section-head">
-        <div class="divider">
-          <div class="line"></div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/></svg>
-          <div class="line"></div>
-        </div>
-        <p class="eyebrow" style="margin-top:16px;">RSVP</p>
-        <h2>Kindly Reply</h2>
-      </div>
-      <p class="deadline">Kindly respond by <b>30 October 2026</b></p>
-
-      <form id="rsvp-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <div class="field">
-          <label for="guest-name">Your Full Name</label>
-          <input type="text" id="guest-name" name="name" placeholder="e.g. Aditi Sharma" required>
-        </div>
-        <div class="field">
-          <label>Will you join us?</label>
-          <div class="attend-options">
-            <input type="radio" id="yes" name="attending" value="Joyfully Accepts" checked>
-            <label for="yes">Joyfully Accepts</label>
-            <input type="radio" id="no" name="attending" value="Regretfully Declines">
-            <label for="no">Regretfully Declines</label>
-          </div>
-        </div>
-        <button type="submit" class="btn">Submit Response</button>
-      </form>
-      <p id="rsvp-message"></p>
+    <!-- Particle container injected via JS -->
+    <div id="particles"></div>
+    
+    <div class="hero-content">
+      <p class="eyebrow">Save the Date</p>
+      <h1>Vritti<span class="amp">&amp;</span>Deepak</h1>
+      <p class="tagline">are getting married</p>
+      <p class="date">13 December 2026</p>
     </div>
   </section>
 
@@ -547,6 +344,42 @@
   const body = document.body;
   let opened = false;
 
+  // Particle Generation Function
+  function startFlowerShower() {
+    const particleContainer = document.getElementById('particles');
+    const totalParticles = 45; // Number of particles on screen
+    
+    for (let i = 0; i < totalParticles; i++) {
+      setTimeout(() => {
+        createParticle(particleContainer);
+      }, Math.random() * 5000); // Stagger initial spawn over 5 seconds
+    }
+  }
+
+  function createParticle(container) {
+    const particle = document.createElement('div');
+    // 60% chance for a petal, 40% chance for glitter
+    const isPetal = Math.random() > 0.4;
+    particle.className = isPetal ? 'particle petal' : 'particle glitter';
+    
+    // Randomize starting position horizontally
+    particle.style.left = Math.random() * 100 + 'vw';
+    
+    // Randomize duration (falling speed) between 6s and 12s
+    const duration = Math.random() * 6 + 6;
+    particle.style.animationDuration = duration + 's';
+    
+    container.appendChild(particle);
+    
+    // When animation ends, remove it and create a new one to keep it endless
+    setTimeout(() => {
+      particle.remove();
+      if (!body.classList.contains('locked')) { // Keep generating if page is open
+        createParticle(container);
+      }
+    }, duration * 1000);
+  }
+
   envelopeScreen.addEventListener('click', () => {
     if (opened) return;
     opened = true;
@@ -555,20 +388,23 @@
     setTimeout(() => envelope.classList.add('opening'), 550);
     setTimeout(() => envelope.classList.add('peek'), 1250);
     
-    // Fade out envelope and trigger the hero animation
+    // Fade out envelope and trigger the hero animations
     setTimeout(() => {
       envelopeScreen.classList.add('reveal');
       body.classList.remove('locked');
       
-      // Trigger the cascading text animation!
+      // Trigger the cascading text animation
       document.querySelector('.hero').classList.add('animate-in');
+      
+      // Start the glitter & flower shower
+      startFlowerShower();
       
       bgm.volume = 0.4;
       bgm.play().catch(() => {});
       musicToggle.classList.add('spinning');
     }, 1900);
     
-    setTimeout(() => { envelopeScreen.style.display = 'none'; }, 3000);
+    setTimeout(() => { envelopeScreen.style.display = 'none'; }, 10000);
   });
 
   musicToggle.addEventListener('click', (e) => {
@@ -582,28 +418,32 @@
     }
   });
 
-  document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const form = e.target;
-    const msg = document.getElementById('rsvp-message');
-    const data = new FormData(form);
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        msg.textContent = 'Thank you — your RSVP has been received with love!';
-      } else {
+  // Safe check for RSVP form in case you add it back later
+  const rsvpForm = document.getElementById('rsvp-form');
+  if (rsvpForm) {
+    rsvpForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const msg = document.getElementById('rsvp-message');
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          msg.textContent = 'Thank you — your RSVP has been received with love!';
+        } else {
+          msg.textContent = 'Hmm, something went wrong. Please try again or reach out to us directly.';
+        }
+      } catch (err) {
         msg.textContent = 'Hmm, something went wrong. Please try again or reach out to us directly.';
       }
-    } catch (err) {
-      msg.textContent = 'Hmm, something went wrong. Please try again or reach out to us directly.';
-    }
-    msg.style.display = 'block';
-    form.reset();
-  });
+      msg.style.display = 'block';
+      form.reset();
+    });
+  }
 </script>
 </body>
 </html>
