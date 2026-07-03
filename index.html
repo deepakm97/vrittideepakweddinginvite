@@ -153,11 +153,13 @@
 
   /* ---------- HERO SECTION ---------- */
   .hero {
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center;
-    padding: 80px 24px 60px;
+    padding: 40px 24px 20px;
     position: relative;
+	justify-content: flex-start; /* Keeps content higher up */
+    padding-top: 15vh; /* Shifts everything up */
     overflow: hidden; /* For particles */
     background: 
       radial-gradient(circle at top left, #FFF5F6, transparent 40%),
@@ -171,6 +173,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: -20px; /* Force it higher */
   }
   
   /* Hide elements initially */
@@ -182,10 +185,10 @@
   .hero.animate-in .hero-content > * { opacity: 1; transform: translateY(0); }
 
   /* Cascading delay */
-  .hero.animate-in .eyebrow { transition-delay: 0.6s; }
-  .hero.animate-in h1 { transition-delay: 1.2s; }
-  .hero.animate-in .tagline { transition-delay: 2.0s; }
-  .hero.animate-in .date { transition-delay: 2.8s; }
+  .hero.animate-in .eyebrow { transition-delay: 1.0s; }
+  .hero.animate-in h1 { transition-delay: 3.0s; }
+  .hero.animate-in .tagline { transition-delay: 4.5s; }
+  .hero.animate-in .date { transition-delay: 6.0s; }
 
   /* Refined "Save the Date" Styling */
   .hero .eyebrow { 
