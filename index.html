@@ -346,6 +346,13 @@
   const body = document.body;
   let opened = false;
 
+	// --- ADD THE USER GESTURE FIX HERE ---
+  document.body.addEventListener('click', () => {
+    if (bgm.paused) {
+        bgm.play().catch(() => {});
+    }
+  }, { once: true });
+	
   // Particle Generation Function
   function startFlowerShower() {
     const particleContainer = document.getElementById('particles');
