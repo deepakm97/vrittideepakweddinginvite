@@ -203,6 +203,7 @@
   #music-toggle.spinning svg { animation: spin 4s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
+  /* ---------- HERO ANIMATIONS ---------- */
   .hero {
     min-height: 100vh;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -213,6 +214,28 @@
       radial-gradient(circle at top left, #FFF5F6, transparent 40%),
       radial-gradient(circle at bottom right, #F5E6E8, transparent 40%);
   }
+  
+  /* Hide elements initially */
+  .hero > * {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  /* Animate in when class is added */
+  .hero.animate-in > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger the delays for a cascading effect */
+  .hero.animate-in .eyebrow { transition-delay: 0.4s; }
+  .hero.animate-in h1 { transition-delay: 0.7s; }
+  .hero.animate-in .tagline { transition-delay: 1.0s; }
+  .hero.animate-in .date { transition-delay: 1.2s; }
+  .hero.animate-in .place { transition-delay: 1.4s; }
+  .hero.animate-in .scroll-cue { transition-delay: 2.0s; }
+
   .hero .eyebrow { margin-bottom: 24px; }
   .hero h1 {
     font-family: 'Playfair Display', serif;
@@ -244,7 +267,6 @@
     position: absolute; bottom: 32px;
     font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
     color: var(--ink-soft);
-    opacity: 0.8;
   }
 
   section { padding: 80px 24px; }
@@ -532,13 +554,20 @@
     envelope.classList.add('untying');
     setTimeout(() => envelope.classList.add('opening'), 550);
     setTimeout(() => envelope.classList.add('peek'), 1250);
+    
+    // Fade out envelope and trigger the hero animation
     setTimeout(() => {
       envelopeScreen.classList.add('reveal');
       body.classList.remove('locked');
+      
+      // Trigger the cascading text animation!
+      document.querySelector('.hero').classList.add('animate-in');
+      
       bgm.volume = 0.4;
       bgm.play().catch(() => {});
       musicToggle.classList.add('spinning');
     }, 1900);
+    
     setTimeout(() => { envelopeScreen.style.display = 'none'; }, 3000);
   });
 
